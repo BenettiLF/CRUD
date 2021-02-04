@@ -1,0 +1,51 @@
+CRIAR BASE DE DADOS crudsimples CONJUNTO DE CARACTERES PADRÃO utf8
+USE crudsimples;
+CRIAR TABELA contatos (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR (45) NÃO NULO,
+    e-mail VARCHAR (45) NOT NULL,
+    celular VARCHAR (15) DEFAULT NULL,
+    CHAVE PRIMÁRIA (id)
+);
+SELECT * FROM contatos;
+<? php
+
+tentar {
+    $ conexao = new PDO ("mysql: host = localhost; dbname = crudsimples", "root", "123456");
+} catch (PDOException $ erro) {
+
+}
+tentar {
+    $ conexao = new PDO ("mysql: host = localhost; dbname = crudsimples", "root", "123456");
+    $ conexao-> setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+} catch (PDOException $ erro) {
+    echo "Erro na conexão:". $ erro-> getMessage ();
+}tentar {
+    $ conexao = new PDO ("mysql: host = localhost; dbname = crudsimples", "root", "123456");
+    $ conexao-> setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+    $ conexao-> exec ("definir nomes utf8");
+} catch (PDOException $ erro) {
+    echo "Erro na conexão:". $ erro-> getMessage ();
+} <! DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title> Agenda de contatos </title>
+    </head>
+    <body>
+        <form action = "? act = save" method = "POST" name = "form1">
+          <h1> Agenda de contatos </h1>
+          <hr>
+          <input type = "hidden" name = "id" />
+          Nome:
+          <input type = "text" name = "nome" />
+          O email:
+          <input type = "text" name = "email" />
+          Celular:
+         <input type = "text" name = "celular" />
+         <input type = "submit" value = "salvar" />
+         <input type = "reset" value = "Novo" />
+         <hr>
+       </form>
+    </body>
+</html>
